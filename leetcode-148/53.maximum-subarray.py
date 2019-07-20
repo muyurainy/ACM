@@ -30,4 +30,14 @@
 #
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        
+        result = nums[0]
+        max_val = 0
+        for i in range(nums):
+            max_val += i
+            if max_val < 0:
+                if max_val < i:
+                    max_val = i
+                
+            if max_val > result:
+                result = max_val
+        return result
