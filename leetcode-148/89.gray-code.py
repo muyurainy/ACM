@@ -52,6 +52,11 @@
 #
 class Solution:
     def grayCode(self, n: int) -> List[int]:
-       res = [0]
-       for i in range(n):
-           res += [j + i << 1 for j in ans][::-1]
+        res = [0]
+        for i in range(n):
+            res += [j + (1 << i) for j in res][::-1]
+            print (res)
+        return res
+'''
+注意运算符的优先级， ‘+’ > '<<', 在这个地方错了好多次。。。
+'''
