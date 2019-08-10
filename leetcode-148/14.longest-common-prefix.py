@@ -38,3 +38,21 @@
 #
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
+        res = ''
+        if len(strs) == 0:
+            return res
+        min_len = min([len(s) for s in strs])
+        for i in range(len(strs[0])):
+            if i >= min_len:
+                break
+            flag = strs[0][i]
+            isEqual = True
+            for j in range(len(strs)-1):
+                if flag != strs[j+1][i]:
+                    isEqual = False
+                    break
+            if isEqual:
+                res += flag
+            else:
+                break
+        return res
