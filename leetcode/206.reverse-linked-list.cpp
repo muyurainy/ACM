@@ -37,18 +37,16 @@
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        ListNode* dum;
-        dum = (ListNode*)malloc(sizeof(ListNode));
-        dum->next = NULL;
+        ListNode *pre = nullptr, *tmp = nullptr;
         if (head == NULL)
             return NULL;
         while (head != NULL) {
-            ListNode* next = head->next;
-            head->next = dum->next;
-            dum->next = head;
-            head = next;
+            tmp = head->next;
+            head->next = pre;
+            pre = head;
+            head = tmp;
         }
-        return dum->next;
+        return pre;
     }
 };
 
